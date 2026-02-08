@@ -432,3 +432,15 @@ footer.footer.footer-dark .footer-copy{
   box-shadow: 0 10px 22px rgba(2,6,23,.08);
   text-decoration:none;
 }
+
+.icon-link svg{
+  width:20px;
+  height:20px;
+  fill:#2563eb;
+}
+
+.icon-link:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(2,6,23,.08);
+  text-decoration:none;
+}
