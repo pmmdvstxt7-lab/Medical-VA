@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VM | Pain Clinic Prior Authorization Support</title>
+  <title>VM | Pain Clinic Prior Auth Support</title>
   <meta name="description" content="HIPAA-compliant prior authorization support for Pain Clinics." />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -41,8 +41,8 @@
           </div>
 
           <h1 class="reveal">
-            Prior Authorization Support for<br />
-            Pain Clinics
+            Prior Authorization Support<br />
+            for Pain Clinics
           </h1>
 
           <p class="lead reveal">
@@ -93,20 +93,25 @@
         <aside class="hero-right">
           <div class="profile-card reveal">
             <div class="profile-top">
-              <img class="avatar" src="profile.png" alt="Van profile photo" />
-              <div class="profile-text">
-                <h2>Vanvan Matunhay</h2>
-                <p class="role">Prior Authorization Specialist</p>
-                <p class="subrole">Interventional Pain Management</p>
-              </div>
-            </div>
+  <img
+    class="avatar"
+    src="profile-new.png"
+    alt="Van profile photo"
+    onclick="openImageModal(this.src)"
+  />
+  <div class="profile-text">
+    <h2>Vanvan Matunhay</h2>
+    <p class="role">Prior Authorization Specialist</p>
+    <p class="subrole">Interventional Pain Management</p>
+  </div>
+</div>
 
             <div class="profile-cta">
- <div class="profile-cta">
   <a class="btn small" href="vanvanmatunhay_resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
   <a class="btn small" href="HIPAA%20-%20Health%20Insurance%20Portability%20and%20Accountability%20Act.pdf" target="_blank" rel="noopener">HIPAA Certificate</a>
   <a class="btn small" href="MVA_Certificate.png" target="_blank" rel="noopener">MVA Certificate</a>
 </div>
+
             <div class="profile-info">
               <div class="info-row">
                 <span>Location</span>
@@ -401,7 +406,7 @@
   <a class="btn small" href="vanvanmatunhay_resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
   <a class="btn small" href="HIPAA%20-%20Health%20Insurance%20Portability%20and%20Accountability%20Act.pdf" target="_blank" rel="noopener">HIPAA Certificate</a>
   <a class="btn small" href="MVA_Certificate.png" target="_blank" rel="noopener">MVA Certificate</a>
-              </div>
+</div>
           </div>
         </div>
       </div>
@@ -433,28 +438,62 @@
 </footer>
   </main>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+ <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Scroll reveal (animate once)
-    const items = document.querySelectorAll(".reveal");
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("in");
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.14 });
-
-    items.forEach((el) => obs.observe(el));
-
-    // Nav shadow when scrolling
-    const nav = document.getElementById("nav");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 8) nav.classList.add("scrolled");
-      else nav.classList.remove("scrolled");
+  // Scroll reveal
+  const items = document.querySelectorAll(".reveal");
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+        obs.unobserve(e.target);
+      }
     });
-  </script>
+  }, { threshold: 0.14 });
+
+  items.forEach((el) => obs.observe(el));
+
+  // Nav shadow
+  const nav = document.getElementById("nav");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 8) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  });
+
+  // Image modal functions
+  function openImageModal(src) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+
+    modalImg.src = src;
+    modal.style.display = "flex";
+
+    requestAnimationFrame(() => {
+      modal.classList.add("show");
+    });
+  }
+
+  function closeImageModal() {
+    const modal = document.getElementById("imageModal");
+    modal.classList.remove("show");
+
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 300);
+  }
+
+  // ESC key close
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeImageModal();
+    }
+  });
+</script>
+ <!-- Image Modal -->
+<div id="imageModal" class="image-modal" onclick="closeImageModal()">
+  <span class="modal-close">&times;</span>
+  <img id="modalImage" alt="Expanded profile photo" />
+</div>
 </body>
 </html>
